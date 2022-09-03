@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 1656662358989127906}
   - component: {fileID: 1656662358989127911}
   - component: {fileID: 1656662358989127910}
+  - component: {fileID: 2939907088636967040}
   m_Layer: 0
   m_Name: AcceleratorMissile
   m_TagString: Untagged
@@ -146,6 +147,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2939907088636967040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656662358989127909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe281baf2d7eea49af2356e44892231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TravelSpeed: 0.25
+  RB: {fileID: 1656662358989127910}
+  _impactSound: {fileID: 0}
+  _impactParticle: {fileID: 0}
+  _accelerationAmount: 0.01
+  _damageAmount: 10
 --- !u!1 &1656662359063270724
 GameObject:
   m_ObjectHideFlags: 0
