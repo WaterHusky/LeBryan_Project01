@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &541891180525620035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4730429542702947350}
+  m_Layer: 0
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730429542702947350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541891180525620035}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.008874491, z: 0.569}
+  m_LocalScale: {x: 2.3911834, y: 2.958143, z: 0.83373463}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5503893611830814008}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5503893611381477683
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,9 +275,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509303ee69e48a841ac32daa0fd2a2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 0.25
-  Invincible: 0
+  _moveSpeed: 0.25
   _turnSpeed: 2
+  Invincible: 0
+  turretPivot: {fileID: 0}
+  BulletSpawnPoint: {fileID: 0}
+  BulletPrefab: {fileID: 0}
+  BulletCooldown: 0
+  BulletFiringParticles: {fileID: 0}
+  BulletFiringSound: {fileID: 0}
 --- !u!114 &5503893611768975025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,9 +297,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 3
-  _treasureCount: 0
-  _invincibilityMaterial: {fileID: 0}
-  _materialsToChangeWhenInvincible: []
+  tankBodyPart: {fileID: 0}
+  tankTurretPart: {fileID: 0}
+  tankBodyMaterial: {fileID: 0}
+  tankTurretMaterial: {fileID: 0}
+  invincibilityMaterial: {fileID: 0}
 --- !u!114 &4637693961473982682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +344,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.49, z: 0.26}
   m_LocalScale: {x: 0.41820297, y: 0.33804992, z: 1.1994224}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4730429542702947350}
   m_Father: {fileID: 5503893612749470004}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
