@@ -57,8 +57,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5503893611381477683}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.07, z: -0.19}
-  m_LocalScale: {x: 0.8793662, y: 0.48290083, z: 0.88479}
+  m_LocalPosition: {x: 0, y: 0.779, z: 0}
+  m_LocalScale: {x: 1.8515282, y: 1.0036128, z: 2.000495}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5503893612749470004}
@@ -92,7 +92,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1310ba89d583b1449ae1c0bf6e5b4f0, type: 2}
+  - {fileID: 2100000, guid: 7936915bba4f550418fd18de8fc407cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,8 +140,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5503893611538047406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.694, y: -0.18, z: 0}
-  m_LocalScale: {x: 0.46179903, y: 0.57787, z: 1.5576507}
+  m_LocalPosition: {x: 1.35, y: 0, z: 0}
+  m_LocalScale: {x: 0.84957165, y: 1.0631075, z: 2.86561}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5503893612749470004}
@@ -208,11 +208,8 @@ GameObject:
   - component: {fileID: 5503893611768975030}
   - component: {fileID: 5503893611768975029}
   - component: {fileID: 5503893611768975031}
-  - component: {fileID: 5503893611768975024}
-  - component: {fileID: 5503893611768975025}
-  - component: {fileID: 4637693961473982682}
   m_Layer: 0
-  m_Name: Tank
+  m_Name: BossTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,8 +242,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.83, y: 1, z: 1.61463}
-  m_Center: {x: 0, y: -0.23, z: 0.043212414}
+  m_Size: {x: 4.66, y: 2.77, z: 3.3}
+  m_Center: {x: 0, y: -0.15, z: 0.09}
 --- !u!54 &5503893611768975031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -263,58 +260,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5503893611768975024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503893611768975028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 509303ee69e48a841ac32daa0fd2a2fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 0.25
-  _turnSpeed: 2
-  Invincible: 0
-  turretPivot: {fileID: 0}
-  BulletSpawnPoint: {fileID: 0}
-  BulletPrefab: {fileID: 0}
-  BulletCooldown: 0
-  BulletFiringParticles: {fileID: 0}
-  BulletFiringSound: {fileID: 0}
---- !u!114 &5503893611768975025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503893611768975028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7deae910b21a2142adfc1132501442e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 3
-  tankBodyPart: {fileID: 0}
-  tankTurretPart: {fileID: 0}
-  tankBodyMaterial: {fileID: 0}
-  tankTurretMaterial: {fileID: 0}
-  invincibilityMaterial: {fileID: 0}
---- !u!114 &4637693961473982682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503893611768975028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8d5d9000c61834388f8adeff9b0844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TreasureCounter: {fileID: 0}
 --- !u!1 &5503893611830814015
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,8 +286,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5503893611830814015}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.49, z: 0.26}
-  m_LocalScale: {x: 0.41820297, y: 0.33804992, z: 1.1994224}
+  m_LocalPosition: {x: 0, y: 1.536, z: 0.88}
+  m_LocalScale: {x: 0.6880275, y: 0.55615973, z: 1.9732897}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4730429542702947350}
@@ -377,7 +322,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1310ba89d583b1449ae1c0bf6e5b4f0, type: 2}
+  - {fileID: 2100000, guid: 7936915bba4f550418fd18de8fc407cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -425,8 +370,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5503893612217366275}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.687, y: -0.18, z: 0}
-  m_LocalScale: {x: 0.46179903, y: 0.57787, z: 1.5576507}
+  m_LocalPosition: {x: -1.35, y: 0, z: 0}
+  m_LocalScale: {x: 0.8152289, y: 1.0201328, z: 2.7497716}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5503893612749470004}

@@ -1092,6 +1092,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2070527727 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4730429542702947350, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+  m_PrefabInstance: {fileID: 5503893611057675972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1625938087843037931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1287,6 +1292,30 @@ PrefabInstance:
       propertyPath: TreasureCounter
       value: 
       objectReference: {fileID: 103119870}
+    - target: {fileID: 5503893611768975024, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+      propertyPath: turretPivot
+      value: 
+      objectReference: {fileID: 1599242499}
+    - target: {fileID: 5503893611768975024, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+      propertyPath: BulletPrefab
+      value: 
+      objectReference: {fileID: 1656662358989127909, guid: c70c3884b4b811b419d543d16e641312, type: 3}
+    - target: {fileID: 5503893611768975024, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+      propertyPath: BulletCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503893611768975024, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+      propertyPath: BulletSpawnPoint
+      value: 
+      objectReference: {fileID: 2070527727}
+    - target: {fileID: 5503893611768975024, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+      propertyPath: BulletFiringSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a105ba041aa66e41832c1447f917f9d, type: 3}
+    - target: {fileID: 5503893611768975024, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+      propertyPath: BulletFiringParticles
+      value: 
+      objectReference: {fileID: 8705952245155143798, guid: ed5b4a049d0a5b44fb6189da45860bd2, type: 3}
     - target: {fileID: 5503893611768975025, guid: e36929f0bae31604ead945135405ccb1, type: 3}
       propertyPath: tankBodyPart
       value: 
