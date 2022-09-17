@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-    public interface IDamageable
-    {
-        void TakeDamage(int damage);
-    }
-
+  
     public class Health : MonoBehaviour, IDamageable
     {
         [SerializeField] int HP = 30;
         [SerializeField] int MaxHP = 30;
 
+        [SerializeField] public AudioSource deathSFX;
+        [SerializeField] public ParticleSystem deathVFX;
 
-        public void TakeDamage(int damage)
+        private AudioSource deathAudio;
+        private ParticleSystem deathExplode;
+
+
+    public void TakeDamage(int damage)
         {
             HP -= damage;
             Debug.Log("health: " + HP);
@@ -24,15 +26,23 @@ using UnityEngine;
 
         public void Kill()
         {
-            Destroy(gameObject);
+        deathAudio = Instantiate(deathSFX, transform.position, transform.rotation);
+        deathAudio.Play();
+        Destroy(deathAudio, deathAudio.clip.length);
+
+        deathExplode = Instantiate(deathVFX, transform.position, transform.rotation);
+        deathExplode.Play();
+        Destroy(deathExplode, 1);
+
+        gameObject.SetActive(false);
         }
 
-        public int getHealth()
+        public int getHP()
         {
             return HP;
         }
 
-        public int getMaxHealth()
+        public int getMaxHP()
         {
             return MaxHP;
         }
