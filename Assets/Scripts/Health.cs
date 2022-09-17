@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-  
-    public class Health : MonoBehaviour, IDamageable
+
+public class Health : MonoBehaviour, IDamageable
     {
         [SerializeField] int HP = 30;
         [SerializeField] int MaxHP = 30;

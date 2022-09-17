@@ -10,6 +10,9 @@ public class BossMovement : MonoBehaviour
     [SerializeField] float moveSpeed = .2f;
     [SerializeField] float speedIncrease = .5f;
     [SerializeField] Health healthCS;
+    public GameObject[] waypoints;
+    int current = 0;
+    float WPradius = 1;
 
 
     private void Update()
@@ -20,12 +23,22 @@ public class BossMovement : MonoBehaviour
             isHalfHealth = false;
             Debug.Log("move speed: " + moveSpeed);
         }
+        Vector3 relativePos = waypoints[current].transform.position - transform.position;
+        transform.rotation = Quaternion.LookRotation(relativePos);
 
         Move();
     }
 
     public void Move()
     {
-        
+        if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
+        {
+            current = Random.Range(0, waypoints.Length);
+            if (current >= waypoints.Length)
+            {
+                current = 0;
+            }
+        }
+        transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * moveSpeed);
     }
 }
