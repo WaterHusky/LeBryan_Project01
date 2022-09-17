@@ -299,7 +299,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5286841721627311402}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2, z: 0.5}
@@ -334,6 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletLifetime: 5
   bulletDamage: 2
+  bulletForce: 25
   DamageSound: {fileID: 8300000, guid: 0a105ba041aa66e41832c1447f917f9d, type: 3}
   DamageParticles: {fileID: 2787983320176812201, guid: d9c527905d15a4e43968d6e1e896d974, type: 3}
   KillSound: {fileID: 8300000, guid: 419b28ed489b073419b946b23eb6c44c, type: 3}

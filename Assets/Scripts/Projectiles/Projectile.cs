@@ -8,6 +8,7 @@ namespace Inheritance
     {
         [SerializeField] float bulletLifetime = 5.0f;
         [SerializeField] int bulletDamage = 2;
+        [SerializeField] float bulletForce = 25.0f;
 
         [Header("Effects")]
         [SerializeField] AudioClip DamageSound;
@@ -20,8 +21,14 @@ namespace Inheritance
         {
             StartCoroutine(DestoryBulletAfterTime(gameObject, bulletLifetime));
         }
+        private void Update()
+        {
+            //move forward at a constant speed
+            transform.Translate(Vector3.forward * Time.deltaTime * bulletForce);
+   
+        }
 
-        private void OnTriggerEnter(Collider other)
+            private void OnTriggerEnter(Collider other)
         {
             // if collider has health
             if (other.gameObject.GetComponent<IDamageable>() != null)
