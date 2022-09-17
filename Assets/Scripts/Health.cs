@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
     {
-        [SerializeField] int HP = 30;
-        [SerializeField] int MaxHP = 30;
+        [SerializeField] public int HP = 30;
+        [SerializeField] public int MaxHP = 30;
 
         [SerializeField] public AudioSource deathSFX;
         [SerializeField] public ParticleSystem deathVFX;
@@ -11,10 +11,16 @@ public class Health : MonoBehaviour, IDamageable
         private AudioSource deathAudio;
         private ParticleSystem deathExplode;
 
+         Player player;
+
 
     public void TakeDamage(int damage)
         {
-            HP -= damage;
+        if (player.Invincibility)
+        {
+            return;
+        }
+        HP -= damage;
             Debug.Log("health: " + HP);
             if (HP <= 0)
             {
@@ -44,4 +50,4 @@ public class Health : MonoBehaviour, IDamageable
         {
             return MaxHP;
         }
-    }
+}

@@ -667,6 +667,14 @@ PrefabInstance:
       propertyPath: deathVFX
       value: 
       objectReference: {fileID: 6150616396259236908, guid: d9c527905d15a4e43968d6e1e896d974, type: 3}
+    - target: {fileID: 5444664653384637651, guid: 613fb9f52c77f324e81b3bed641c5a48, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 343430897}
+    - target: {fileID: 5444664653384637651, guid: 613fb9f52c77f324e81b3bed641c5a48, type: 3}
+      propertyPath: PlayerTank
+      value: 
+      objectReference: {fileID: 767814964}
     - target: {fileID: 5503893611768975028, guid: 613fb9f52c77f324e81b3bed641c5a48, type: 3}
       propertyPath: m_Name
       value: BossTank
@@ -782,28 +790,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a6fbf1f5e0e6f488e59592f4f6f6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &343430896
-MonoBehaviour:
+--- !u!195 &343430897
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343430888}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c78d3d77eccb147a5a5e87e3634911, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 0
-  angle: 0
-  PlayerTank: {fileID: 767814964}
-  TargetSight:
-    serializedVersion: 2
-    m_Bits: 0
-  ObstructionSight:
-    serializedVersion: 2
-    m_Bits: 0
-  agent: {fileID: 0}
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &354200605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1175c082fe5587e48bb097e32af7015e, type: 3}
+--- !u!1 &1507876195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6343181086253968968, guid: ea2fac513408d124984641adf6eef3bc, type: 3}
+  m_PrefabInstance: {fileID: 6343181086973604420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1599242499 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5503893611830814015, guid: e36929f0bae31604ead945135405ccb1, type: 3}
@@ -1535,6 +1548,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: eab5d274da219d14399d25e142e34cbe, type: 3}
     - target: {fileID: 495618839851944595, guid: b657afdbaaf292b4297662da249f5ffb, type: 3}
+      propertyPath: _SlowingSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 495618839851944595, guid: b657afdbaaf292b4297662da249f5ffb, type: 3}
       propertyPath: _damageAmount
       value: 0
       objectReference: {fileID: 0}
@@ -1618,7 +1635,7 @@ PrefabInstance:
     - target: {fileID: 7644187577073957316, guid: eb8353aa7132f1f47bb491bbe3fe620e, type: 3}
       propertyPath: collectParticles
       value: 
-      objectReference: {fileID: 8406206778574024589, guid: 2cbc4d2bf3af86548b4165340b9081bd, type: 3}
+      objectReference: {fileID: 6150616396259236908, guid: 3659ece701545b641870b1704a7b4602, type: 3}
     m_RemovedComponents:
     - {fileID: 8629574998265261736, guid: eb8353aa7132f1f47bb491bbe3fe620e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eb8353aa7132f1f47bb491bbe3fe620e, type: 3}
@@ -1709,7 +1726,7 @@ PrefabInstance:
     - target: {fileID: 5503893611768975024, guid: e36929f0bae31604ead945135405ccb1, type: 3}
       propertyPath: BulletPrefab
       value: 
-      objectReference: {fileID: 1656662358989127909, guid: c70c3884b4b811b419d543d16e641312, type: 3}
+      objectReference: {fileID: 1507876195}
     - target: {fileID: 5503893611768975024, guid: e36929f0bae31604ead945135405ccb1, type: 3}
       propertyPath: BulletCooldown
       value: 1
@@ -1765,6 +1782,10 @@ PrefabInstance:
     - target: {fileID: 5503893611768975028, guid: e36929f0bae31604ead945135405ccb1, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503893611768975028, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5503893611768975030, guid: e36929f0bae31604ead945135405ccb1, type: 3}
       propertyPath: m_RootOrder
@@ -1835,7 +1856,7 @@ PrefabInstance:
     - target: {fileID: 8172768308081993417, guid: 57cb9b1800269ee409843f02bdbafafc, type: 3}
       propertyPath: _collectParticles
       value: 
-      objectReference: {fileID: 8406206778574024589, guid: 3b7ab0126d298c14fa16ddbc62fa1ffb, type: 3}
+      objectReference: {fileID: 6150616396259236908, guid: cba38c84862b1d64da925bad29fa15b4, type: 3}
     - target: {fileID: 8505783956023447699, guid: 57cb9b1800269ee409843f02bdbafafc, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2009,7 +2030,7 @@ PrefabInstance:
     - target: {fileID: 6774488826321645011, guid: dfb4f0eab0fdc1a4f8e2bf880eb220e5, type: 3}
       propertyPath: _collectParticles
       value: 
-      objectReference: {fileID: 8406206778574024589, guid: 8e197b5569231c84288f8fdf210135ae, type: 3}
+      objectReference: {fileID: 6150616396259236908, guid: a0442380aa428c247b520e7a6801bbf0, type: 3}
     - target: {fileID: 8696544569741304616, guid: dfb4f0eab0fdc1a4f8e2bf880eb220e5, type: 3}
       propertyPath: m_Name
       value: SpeedIncrease
@@ -2078,6 +2099,6 @@ PrefabInstance:
     - target: {fileID: 4450704671930905179, guid: 2727545d104903e48becce2ee215f398, type: 3}
       propertyPath: _collectParticles
       value: 
-      objectReference: {fileID: 8406206778574024589, guid: c28b3e7f8119f424fb3eb0c7eabf59f8, type: 3}
+      objectReference: {fileID: 6150616396259236908, guid: d1beb976d3f1afc4e8420a539b5bb459, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2727545d104903e48becce2ee215f398, type: 3}

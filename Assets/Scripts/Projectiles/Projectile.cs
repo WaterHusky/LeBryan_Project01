@@ -4,53 +4,84 @@ using UnityEngine;
 
 namespace Inheritance
 {
-   // [RequireComponent(typeof(Rigidbody))]
-    public abstract class Projectile : MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
-        protected abstract void Impact(Collision otherCollision);
+        [SerializeField] float bulletLifetime = 5.0f;
+        [SerializeField] int bulletDamage = 2;
 
-        [Header("Base Settings")]
-        [SerializeField] protected float TravelSpeed = .25f;
-        [SerializeField] protected Rigidbody RB;
+        [Header("Effects")]
+        [SerializeField] AudioClip DamageSound;
+        [SerializeField] GameObject DamageParticles;
 
-        [Header("FX")]
-        [SerializeField] protected AudioClip _impactSound;
-        [SerializeField] protected ParticleSystem _impactParticle;
+        [SerializeField] AudioClip KillSound;
+        [SerializeField] GameObject KillParticles;
 
-
-        private void OnCollisionEnter(Collision collision)
+        private void Start()
         {
-            Debug.Log("Projectile collision!");
-            //possible object filtering
-            Impact(collision);
-            if(_impactParticle != null)
-            {
-                //play particle
-            }
-            if (_impactSound != null)
-            {
-                //play sound effect
-            }
-
+            StartCoroutine(DestoryBulletAfterTime(gameObject, bulletLifetime));
         }
 
-     //   private void Awake()
-       // {
-       //     if (RB == null)
-       //     {
-       //         RB = GetComponent<Rigidbody>();
-       //     }
-       // }
-
-        private void FixedUpdate()
+        private void OnTriggerEnter(Collider other)
         {
-            Move();
+            // if collider has health
+            if (other.gameObject.GetComponent<IDamageable>() != null)
+            {
+                Health healthScript = other.gameObject.GetComponent<Health>();
+                healthScript.TakeDamage(bulletDamage);
+
+                // When health at 0 HP commence death sequence
+                if (healthScript.getHP() <= 0)
+                {
+                    if (KillParticles != null)
+                    {
+                        GameObject tempKillParticles = Instantiate(KillParticles, gameObject.transform.position, gameObject.transform.rotation);
+                        Destroy(tempKillParticles, 2f);
+                    }
+                    if (KillSound != null)
+                    {
+                        AudioHelper.PlayClip2D(KillSound, 1f);
+                    }
+                    Destroy(other.gameObject);
+                    Destroy(gameObject);
+                }
+                // damage effects when still have HP
+                else
+                {
+                    if (DamageParticles != null)
+                    {
+                        GameObject tempDamageParticles = Instantiate(DamageParticles, gameObject.transform.position, gameObject.transform.rotation);
+                        Destroy(tempDamageParticles, 2f);
+                    }
+                    if (DamageSound != null)
+                    {
+                        AudioHelper.PlayClip2D(DamageSound, 1f);
+                    }
+                    Destroy(gameObject);
+                }
+            }
+            else // if collider has no Health - instant kill objects
+            {
+                Debug.Log("Can't be hurt");
+
+                if (KillParticles != null)
+                {
+                    GameObject tempKillParticles = Instantiate(KillParticles, gameObject.transform.position, gameObject.transform.rotation);
+                    Destroy(tempKillParticles, 2f);
+                }
+                if (KillSound != null)
+                {
+                    AudioHelper.PlayClip2D(KillSound, 1f);
+                }
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
         }
 
-        protected virtual void Move()
+        private IEnumerator DestoryBulletAfterTime(GameObject bullet, float lifetime)
         {
-            Vector3 moveOffset = transform.forward * TravelSpeed;
-            RB.MovePosition(RB.position + moveOffset);
+            yield return new WaitForSeconds(lifetime);
+
+            Destroy(bullet);
         }
     }
 }

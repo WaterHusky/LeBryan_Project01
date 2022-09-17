@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 6906399790525051976}
   - component: {fileID: 813403064412151526}
   - component: {fileID: 1115060412447006952}
+  - component: {fileID: 5444664653384637651}
   m_Layer: 0
   m_Name: BossTank
   m_TagString: Untagged
@@ -409,6 +410,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5444664653384637651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5503893611768975028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c78d3d77eccb147a5a5e87e3634911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  angle: 0
+  PlayerTank: {fileID: 0}
+  TargetSight:
+    serializedVersion: 2
+    m_Bits: 0
+  ObstructionSight:
+    serializedVersion: 2
+    m_Bits: 0
+  agent: {fileID: 0}
 --- !u!1 &5503893611830814015
 GameObject:
   m_ObjectHideFlags: 0
