@@ -8,7 +8,6 @@ public class TankController : MonoBehaviour
     [SerializeField] float _turnSpeed = 2f;
 
     Rigidbody _rb = null;
-    public bool Invincible = false;
 
     [SerializeField] private GameObject turretPivot;
     [SerializeField] private Transform BulletSpawnPoint;
@@ -17,6 +16,16 @@ public class TankController : MonoBehaviour
 
     [SerializeField] private ParticleSystem BulletFiringParticles;
     [SerializeField] private AudioClip BulletFiringSound;
+
+    [SerializeField] private GameObject tankBodyPart;
+    [SerializeField] private GameObject tankTurretPart;
+    [SerializeField] private Material tankBodyMaterial;
+    [SerializeField] private Material tankTurretMaterial;
+    [SerializeField] private Material invincibilityMaterial;
+
+    TankController _tankController;
+    public bool Invincibility;
+    Health health;
 
     private float bulletTimer;
     public float MaxSpeed
@@ -31,7 +40,14 @@ public class TankController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         bulletTimer = 0;
+        _tankController = GetComponent<TankController>();
     }
+
+    private void Start()
+    {
+        Invincibility = false;
+    }
+
 
     private void FixedUpdate()
     {
@@ -47,6 +63,30 @@ public class TankController : MonoBehaviour
         {
             SpawnBullet();
         }
+    }
+
+    public void InvincibleOn()
+    {
+        Invincibility = true;
+        tankBodyPart.GetComponent<MeshRenderer>().material = invincibilityMaterial;
+        tankTurretPart.GetComponent<MeshRenderer>().material = invincibilityMaterial;
+    }
+
+    public void InvincibleOff()
+    {
+        Invincibility = false;
+        tankBodyPart.GetComponent<MeshRenderer>().material = tankBodyMaterial;
+        tankTurretPart.GetComponent<MeshRenderer>().material = tankTurretMaterial;
+    }
+
+    public void DecreaseHealth(int amount)
+    {
+        health.TakeDamage(amount);
+    }
+
+    public void Kill()
+    {
+        gameObject.SetActive(false);
     }
 
     public void MoveTank()

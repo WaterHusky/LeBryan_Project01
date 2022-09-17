@@ -5,40 +5,102 @@ using UnityEngine;
 public class BossMovement : MonoBehaviour
 {
 
-    bool isHalfHealth = true;
+    [SerializeField] private float speed;
+    [SerializeField] private float leftPatrolBound;
+    [SerializeField] private float rightPatrolBound;
+    [SerializeField] private float lowerPatrolBound;
+    [SerializeField] private float upperPatrolBound;
+    [SerializeField] private float patrolLength;
+    [SerializeField] private List<Transform> bossChargePositions;
 
-    [SerializeField] float moveSpeed = .2f;
-    [SerializeField] float speedIncrease = .5f;
-    [SerializeField] Health healthCS;
-    public GameObject[] waypoints;
-    int current = 0;
-    float WPradius = 1;
+    private Vector3 targetPatrolPosition;
+    private Vector3 targetChargePosition;
+    private float patrolTimer;
 
+    //use these as place holders for states that may come later
+    private bool patroling;
+    private bool reachedPatrolPosition;
+    private bool reachedChargePosition;
+
+    private void Awake()
+    {
+        patroling = true;
+        patrolTimer = patrolLength;
+        reachedPatrolPosition = true; //start true to generate an initial position
+    }
 
     private void Update()
     {
-        if (healthCS.getHP() <= healthCS.getMaxHP() / 2 && isHalfHealth)
+        if (patroling)
         {
-            moveSpeed += speedIncrease;
-            isHalfHealth = false;
-            Debug.Log("move speed: " + moveSpeed);
-        }
-        Vector3 relativePos = waypoints[current].transform.position - transform.position;
-        transform.rotation = Quaternion.LookRotation(relativePos);
+            //walk around to a random spot on the map
 
-        Move();
-    }
-
-    public void Move()
-    {
-        if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
-        {
-            current = Random.Range(0, waypoints.Length);
-            if (current >= waypoints.Length)
+            //if the spot has been reached, pick a new spot
+            if (reachedPatrolPosition)
             {
-                current = 0;
+
+                reachedPatrolPosition = false;
+
+                float randX = Random.Range(leftPatrolBound, rightPatrolBound);
+                float randZ = Random.Range(lowerPatrolBound, upperPatrolBound);
+                targetPatrolPosition = new Vector3(randX, transform.position.y, randZ);
+                Vector3 relativePos = targetPatrolPosition - transform.position;
+                transform.rotation = Quaternion.LookRotation(relativePos);
+
+                Debug.Log($"going to new patrol position: {targetPatrolPosition}");
+            }
+
+            //move towards target position
+            transform.position = Vector3.MoveTowards(transform.position, targetPatrolPosition, speed * Time.deltaTime);
+            //update patroling timer
+            patrolTimer -= Time.deltaTime;
+
+            //if the spot has now been reached, set the flag
+            if (Vector3.Distance(transform.position, targetPatrolPosition) <= 0.5f)
+            {
+                Debug.Log("reached target patrol position");
+
+                reachedPatrolPosition = true;
+
+                //check if the patrol timer is up
+                if (patrolTimer <= 0)
+                {
+                    Debug.Log("patrol timer over");
+
+                    patroling = false;
+
+                    //pick one of the charge positions
+                    int randIndex = Random.Range(0, bossChargePositions.Count - 1);
+                    targetChargePosition = bossChargePositions[randIndex].position;
+                    Debug.Log($"going to new charge position: {targetChargePosition}");
+
+                    reachedChargePosition = false;
+                }
+            }
+
+        }
+        else
+        {
+            //walk to the randomly selected charge position
+
+            if (!reachedChargePosition)
+            {
+                //move towards target charging position
+                transform.position = Vector3.MoveTowards(transform.position, targetChargePosition, speed * Time.deltaTime);
+
+                //if the spot has now been reached, initiate charge attack
+                if (Vector3.Distance(transform.position, targetChargePosition) <= 0.5f)
+                {
+                    Debug.Log("reached target charge position");
+
+                    reachedChargePosition = true;
+                    //TODO: add charging attack functionality
+                    //FOR NOW, JUST GO BACK TO PATROLING
+                    patroling = true;
+                    patrolTimer = patrolLength;
+                    reachedPatrolPosition = false;
+                }
             }
         }
-        transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * moveSpeed);
     }
 }

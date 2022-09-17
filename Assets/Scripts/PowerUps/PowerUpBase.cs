@@ -7,14 +7,14 @@ public abstract class PowerUpBase : MonoBehaviour
     [SerializeField] private float PowerupLength;
     [SerializeField] private ParticleSystem collectParticles;
     [SerializeField] private AudioClip collectSound;
-    private Player player;
+    private TankController player;
     private MeshRenderer Mesh;
     private Collider powerupCollider;
     private bool PowerUpState;
     private float PowerupTime;
 
-    protected abstract void PowerUp(Player player);
-    protected abstract void PowerDown(Player player);
+    protected abstract void PowerUp(TankController player);
+    protected abstract void PowerDown(TankController player);
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public abstract class PowerUpBase : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        player = other.gameObject.GetComponent<Player>();
+        player = other.gameObject.GetComponent<TankController>();
         if (player != null)
         {
             PowerUp(player);

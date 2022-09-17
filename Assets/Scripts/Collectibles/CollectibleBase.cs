@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class CollectibleBase : MonoBehaviour
 {
-    protected abstract void Collect(Player player);
+    protected abstract void Collect(TankController player);
 
     [SerializeField] float _movementSpeed = 1;
     protected float MovementSpeed => _movementSpeed;
@@ -33,7 +33,7 @@ public abstract class CollectibleBase : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
+        TankController player = other.gameObject.GetComponent<TankController>();
         if(player != null)
         {
             Collect(player);

@@ -7,8 +7,6 @@ public class Enemy_Boss : MonoBehaviour
     int fireCount = 0;
     float lastShotTime;
 
-    Health bossHealth;
-
     public Transform player;
     public Transform bulletSpawn;
     public GameObject bulletPrefab;
@@ -18,7 +16,7 @@ public class Enemy_Boss : MonoBehaviour
 
     private void Start()
     {
-        bossHealth = gameObject.GetComponent<Health>();
+
     }
     private void Update()
     {
@@ -30,7 +28,7 @@ public class Enemy_Boss : MonoBehaviour
 
     public void FireBullets()
     {
-        // shoot 3 consecutive bullets
+        // shoot 2 consecutive bullets
 
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -39,7 +37,7 @@ public class Enemy_Boss : MonoBehaviour
         lastShotTime = Time.time;
         fireCount++;
 
-        if (fireCount == 3)
+        if (fireCount == 2)
         {
             FireBullet();
             fireCount = 0;

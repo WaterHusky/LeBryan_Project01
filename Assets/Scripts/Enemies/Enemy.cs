@@ -27,19 +27,19 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
+        TankController player = other.gameObject.GetComponent<TankController>();
         if(player != null)
         {
             PlayerImpact(player);
             ImpactFeedback();
         }
-        if (_tankController.Invincible == true)
+        if (_tankController.Invincibility == true)
         {
-            _tankController.Invincible = false;
+            _tankController.Invincibility = false;
         }
     }
 
-    protected virtual void PlayerImpact(Player player)
+    protected virtual void PlayerImpact(TankController player)
     {
             player.DecreaseHealth(_damageAmount);
     }

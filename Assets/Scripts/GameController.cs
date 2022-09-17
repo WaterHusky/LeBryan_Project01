@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
 
-    public void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Backspace))
-            SceneManager.LoadScene("Sandbox");
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
             Application.Quit();
+        }
     }
+
 }

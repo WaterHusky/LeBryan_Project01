@@ -1,53 +1,73 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
     {
-        [SerializeField] public int HP = 30;
-        [SerializeField] public int MaxHP = 30;
-
-        [SerializeField] public AudioSource deathSFX;
-        [SerializeField] public ParticleSystem deathVFX;
-
-        private AudioSource deathAudio;
-        private ParticleSystem deathExplode;
-
-         Player player;
-
+    [SerializeField] private int maxHP;
+    [SerializeField] private Collider objectCollider;
+    [SerializeField] private List<MeshRenderer> artMeshRenderers;
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private ParticleSystem killParticles;
+    [SerializeField] private AudioClip killSound;
+    public int currentHP;
+    private void Awake()
+    {
+        currentHP = maxHP;
+    }
 
     public void TakeDamage(int damage)
+    {
+        //apply damage
+        currentHP -= damage;
+
+        //play feedback
+        StartCoroutine(HurtFlash());
+        AudioHelper.PlayClip2D(hurtSound, 1);
+
+        //kill the object if it reaches 0
+        if (currentHP <= 0)
         {
-        if (player.Invincibility)
-        {
-            return;
+            Kill();
         }
-        HP -= damage;
-            Debug.Log("health: " + HP);
-            if (HP <= 0)
-            {
-                Kill();
-            }
-        }
+    }
 
-        public void Kill()
+    public void Heal(int heal)
+    {
+        currentHP += heal;
+    }
+
+    private IEnumerator HurtFlash()
+    {
+        //set all materials to red
+        foreach (MeshRenderer r in artMeshRenderers)
         {
-        deathAudio = Instantiate(deathSFX, transform.position, transform.rotation);
-        deathAudio.Play();
-        Destroy(deathAudio, deathAudio.clip.length);
-
-        deathExplode = Instantiate(deathVFX, transform.position, transform.rotation);
-        deathExplode.Play();
-        Destroy(deathExplode, 1);
-
-        gameObject.SetActive(false);
-        }
-
-        public int getHP()
-        {
-            return HP;
+            r.material.SetColor("_EmissionColor", Color.red);
         }
 
-        public int getMaxHP()
+        yield return new WaitForSeconds(0.1f);
+
+        //set all materials back to normal
+        foreach (MeshRenderer r in artMeshRenderers)
         {
-            return MaxHP;
+            r.material.SetColor("_EmissionColor", Color.green);
         }
+    }
+
+    private void Kill()
+    {
+        Debug.Log($"{gameObject.name} has died");
+        //spawn kill particles
+        Instantiate(killParticles, gameObject.transform);
+
+        //turn off art and collider
+        objectCollider.enabled = false;
+        foreach (MeshRenderer r in artMeshRenderers)
+        {
+            r.enabled = false;
+        }
+        //play kill sound
+        AudioHelper.PlayClip2D(killSound, 1);
+    }
 }
