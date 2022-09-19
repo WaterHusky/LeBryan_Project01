@@ -24,6 +24,7 @@ public class Enemy_Boss : MonoBehaviour
         {
             FireBullets();
         }
+
     }
 
     public void FireBullets()

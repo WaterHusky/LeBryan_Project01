@@ -11,11 +11,13 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("Reset Game");
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
+            Debug.Log("Exit the Game");
         }
     }
 
