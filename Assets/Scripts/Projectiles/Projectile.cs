@@ -35,11 +35,6 @@ namespace Inheritance
 
         private void OnTriggerEnter(Collider other)
         {
-            //do nothing if it hits the player
-            if (other.gameObject.CompareTag("Player"))
-            {
-                return;
-            }
 
             //spawn explosion particles
             Instantiate(explosionParticles, transform.position, explosionParticles.transform.rotation);

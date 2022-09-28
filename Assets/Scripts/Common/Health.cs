@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
     {
-    [SerializeField] private int maxHP;
+    [SerializeField] public int maxHP;
     [SerializeField] private Collider objectCollider;
     [SerializeField] private List<MeshRenderer> artMeshRenderers;
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private ParticleSystem killParticles;
     [SerializeField] private AudioClip killSound;
     public int currentHP;
+    public event Action<int> TookDamage;
     private void Awake()
     {
         currentHP = maxHP;
@@ -21,6 +22,10 @@ public class Health : MonoBehaviour, IDamageable
     {
         //apply damage
         currentHP -= damage;
+
+
+        //invoke the event for anything listening
+        TookDamage?.Invoke(currentHP);
 
         //play feedback
         StartCoroutine(HurtFlash());
@@ -51,7 +56,7 @@ public class Health : MonoBehaviour, IDamageable
         //set all materials back to normal
         foreach (MeshRenderer r in artMeshRenderers)
         {
-            r.material.SetColor("_EmissionColor", Color.green);
+            r.material.SetColor("_EmissionColor", Color.black);
         }
     }
 

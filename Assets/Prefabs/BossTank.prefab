@@ -245,8 +245,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.66, y: 1.62, z: 3.3}
-  m_Center: {x: 0, y: 0.29, z: 0.09}
+  m_Size: {x: 4.66, y: 3.1, z: 3.3}
+  m_Center: {x: 0, y: 0.29, z: -0.41}
 --- !u!54 &5503893611768975031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -317,6 +317,7 @@ MonoBehaviour:
   hurtSound: {fileID: 0}
   killParticles: {fileID: 0}
   killSound: {fileID: 0}
+  currentHP: 0
 --- !u!1 &5503893611830814015
 GameObject:
   m_ObjectHideFlags: 0
