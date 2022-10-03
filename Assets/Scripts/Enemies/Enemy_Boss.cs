@@ -10,7 +10,10 @@ public class Enemy_Boss : MonoBehaviour
     public Transform player;
     public Transform bulletSpawn;
     public GameObject bulletPrefab;
+    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private GameObject bossturretPivot;
 
+    [SerializeField] private float _accuracy = 3;
     [SerializeField] float bulletForce = 25.0f;
     [SerializeField] float fireRate = 1.5f;
 
@@ -22,6 +25,7 @@ public class Enemy_Boss : MonoBehaviour
     {
         if (Time.time - lastShotTime >= fireRate)
         {
+            AimingPlayer();
             FireBullets();
         }
 
@@ -29,7 +33,6 @@ public class Enemy_Boss : MonoBehaviour
 
     public void FireBullets()
     {
-        // shoot 2 consecutive bullets
 
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -38,17 +41,14 @@ public class Enemy_Boss : MonoBehaviour
         lastShotTime = Time.time;
         fireCount++;
 
-        if (fireCount == 2)
-        {
-            FireBullet();
-            fireCount = 0;
-        }
     }
 
-    public void FireBullet()
+    public void AimingPlayer()
     {
-        // shoot bullet projectile at player
+        Vector3 playerPos = _playerTransform.position;
 
-
+        bossturretPivot.transform.LookAt(new Vector3(0, playerPos.y, 0));
     }
+
+   
 }

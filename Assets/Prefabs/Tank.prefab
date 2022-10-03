@@ -209,7 +209,6 @@ GameObject:
   - component: {fileID: 5503893611768975029}
   - component: {fileID: 5503893611768975031}
   - component: {fileID: 5503893611768975024}
-  - component: {fileID: 4637693961473982682}
   - component: {fileID: 3885749451279964888}
   m_Layer: 0
   m_Name: Tank
@@ -289,19 +288,6 @@ MonoBehaviour:
   tankTurretMaterial: {fileID: 0}
   invincibilityMaterial: {fileID: 0}
   Invincibility: 0
---- !u!114 &4637693961473982682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503893611768975028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8d5d9000c61834388f8adeff9b0844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TreasureCounter: {fileID: 0}
 --- !u!114 &3885749451279964888
 MonoBehaviour:
   m_ObjectHideFlags: 0

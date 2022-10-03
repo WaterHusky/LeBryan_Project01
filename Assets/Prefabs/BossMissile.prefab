@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 5286841721627311405}
   - component: {fileID: 5286841721627311400}
   - component: {fileID: 5286841721627311401}
-  - component: {fileID: 2825286636471080799}
+  - component: {fileID: -1366568279356062637}
   m_Layer: 0
   m_Name: BossMissile
   m_TagString: Untagged
@@ -320,7 +320,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2825286636471080799
+--- !u!114 &-1366568279356062637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,11 +329,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5286841721627311402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55e34feaee74dec4ebbe070e1fbb8518, type: 3}
+  m_Script: {fileID: 11500000, guid: c53b5a9470099574c9533eb5f8f0abea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BulletDamage: 5
   BulletSpeed: 10
   TimeLimit: 5
   explosionParticles: {fileID: 6150616396259236908, guid: f8a9aaac99374ef48a82a65ec3227993, type: 3}
-  explosionSound: {fileID: 8300000, guid: 419b28ed489b073419b946b23eb6c44c, type: 3}
+  explosionSound: {fileID: 8300000, guid: 0a105ba041aa66e41832c1447f917f9d, type: 3}
