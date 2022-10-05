@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_Boss : MonoBehaviour
 {
-    int fireCount = 0;
+
     float lastShotTime;
 
     public Transform player;
@@ -17,15 +17,11 @@ public class Enemy_Boss : MonoBehaviour
     [SerializeField] float bulletForce = 25.0f;
     [SerializeField] float fireRate = 1.5f;
 
-    private void Start()
-    {
-
-    }
     private void Update()
     {
         if (Time.time - lastShotTime >= fireRate)
         {
-            AimingPlayer();
+            AimingPlayer(0);
             FireBullets();
         }
 
@@ -39,16 +35,29 @@ public class Enemy_Boss : MonoBehaviour
         rb.AddForce(bulletSpawn.forward * bulletForce, ForceMode.Impulse);
 
         lastShotTime = Time.time;
-        fireCount++;
+
 
     }
 
-    public void AimingPlayer()
+
+    public void AimingPlayer(float Smoothing)
     {
         Vector3 playerPos = _playerTransform.position;
 
-        bossturretPivot.transform.LookAt(new Vector3(0, playerPos.y, 0));
+        // The target rotation "Fully Looking at player"
+        Quaternion TargetRot = Quaternion.LookRotation((playerPos - bossturretPivot.transform.position).normalized);
+
+        // If no smoothing, then snap
+        if (Smoothing <= 0)
+        {
+            bossturretPivot.transform.rotation = TargetRot;
+            return;
+        }
+
+        // Smooth rotation instead of snap
+        bossturretPivot.transform.rotation = Quaternion.Lerp(bossturretPivot.transform.rotation, TargetRot, Smoothing * Time.fixedDeltaTime);
+
     }
 
-   
+
 }

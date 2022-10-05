@@ -92,7 +92,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1310ba89d583b1449ae1c0bf6e5b4f0, type: 2}
+  - {fileID: 2100000, guid: f8fe3cb3a14ee05448c44e85227cda1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -208,11 +208,11 @@ GameObject:
   - component: {fileID: 5503893611768975030}
   - component: {fileID: 5503893611768975029}
   - component: {fileID: 5503893611768975031}
-  - component: {fileID: 5503893611768975024}
   - component: {fileID: 3885749451279964888}
+  - component: {fileID: 201712236433593247}
   m_Layer: 0
-  m_Name: Tank
-  m_TagString: Untagged
+  m_Name: Minion
+  m_TagString: Minion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,8 +244,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.95, y: 2.02, z: 1.61463}
-  m_Center: {x: 0, y: -0.23, z: -0.26}
+  m_Size: {x: 1.95, y: 0.92, z: 1.61463}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5503893611768975031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -262,32 +262,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5503893611768975024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5503893611768975028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 509303ee69e48a841ac32daa0fd2a2fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 0.25
-  _turnSpeed: 2
-  turretPivot: {fileID: 0}
-  BulletSpawnPoint: {fileID: 0}
-  BulletPrefab: {fileID: 0}
-  BulletCooldown: 0
-  BulletFiringParticles: {fileID: 0}
-  BulletFiringSound: {fileID: 0}
-  tankBodyPart: {fileID: 0}
-  tankTurretPart: {fileID: 0}
-  tankBodyMaterial: {fileID: 0}
-  tankTurretMaterial: {fileID: 0}
-  invincibilityMaterial: {fileID: 0}
-  Invincibility: 0
 --- !u!114 &3885749451279964888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,13 +274,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a6fbf1f5e0e6f488e59592f4f6f6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
-  objectCollider: {fileID: 0}
-  artMeshRenderers: []
-  hurtSound: {fileID: 0}
-  killParticles: {fileID: 0}
-  killSound: {fileID: 0}
-  currentHP: 0
+  maxHP: 10
+  objectCollider: {fileID: 5503893611768975029}
+  artMeshRenderers:
+  - {fileID: 5503893611381477693}
+  - {fileID: 5503893612217366285}
+  - {fileID: 5503893611538047400}
+  - {fileID: 5503893611830814009}
+  hurtSound: {fileID: 8300000, guid: eab5d274da219d14399d25e142e34cbe, type: 3}
+  killParticles: {fileID: 6150616396259236908, guid: 317c78e74109b1f4fa294165ba692432, type: 3}
+  killSound: {fileID: 8300000, guid: 818a86f5afb262b488e3dfbebc1c3fef, type: 3}
+  currentHP: 10
+--- !u!114 &201712236433593247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5503893611768975028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b704ea5c6cd2347a1d03e4c71dc65b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 5503893611768975030, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+  physicalMinionDamage: 2
 --- !u!1 &5503893611830814015
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +361,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b1310ba89d583b1449ae1c0bf6e5b4f0, type: 2}
+  - {fileID: 2100000, guid: f8fe3cb3a14ee05448c44e85227cda1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -417,7 +409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5503893612217366275}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.687, y: -0.18, z: 0}
+  m_LocalPosition: {x: -0.68700004, y: -0.18, z: 0}
   m_LocalScale: {x: 0.46179903, y: 0.57787, z: 1.5576507}
   m_ConstrainProportionsScale: 0
   m_Children: []

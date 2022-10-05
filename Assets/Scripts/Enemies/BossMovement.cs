@@ -55,6 +55,7 @@ public class BossMovement : MonoBehaviour
 
                 float randX = UnityEngine.Random.Range(leftPatrolBound, rightPatrolBound);
                 float randZ = UnityEngine.Random.Range(lowerPatrolBound, upperPatrolBound);
+                transform.LookAt(targetPatrolPosition);
                 targetPatrolPosition = new Vector3(randX, transform.position.y, randZ);
             }
 

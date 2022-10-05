@@ -128,5 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PowerupLength: 5
-  collectParticles: {fileID: 0}
-  collectSound: {fileID: 0}
+  collectParticles: {fileID: 6150616396259236908, guid: 3659ece701545b641870b1704a7b4602, type: 3}
+  collectSound: {fileID: 8300000, guid: d9ec44a32cbbe8d4a90a7093fc314e8c, type: 3}

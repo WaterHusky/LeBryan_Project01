@@ -11,12 +11,14 @@ public abstract class CollectibleBase : MonoBehaviour
 
     [SerializeField] ParticleSystem _collectParticles;
     [SerializeField] AudioClip _collectSound;
+    Spawner spawner;
 
     Rigidbody _rb;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        spawner = FindObjectOfType<Spawner>();
     }
 
     private void FixedUpdate()
@@ -37,6 +39,7 @@ public abstract class CollectibleBase : MonoBehaviour
         if(player != null)
         {
             Collect(player);
+            spawner.powerupCount--;
             //spawn particles & sfx because we need to disable object
             Feedback();
 

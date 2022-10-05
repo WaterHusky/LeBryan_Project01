@@ -13,6 +13,7 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip killSound;
     public int currentHP;
     public event Action<int> TookDamage;
+    Spawner spawner;
     private void Awake()
     {
         currentHP = maxHP;
@@ -62,6 +63,12 @@ public class Health : MonoBehaviour, IDamageable
 
     private void Kill()
     {
+
+        if (gameObject.tag == "Minion")
+        {
+            spawner.enemyCount--;
+        }
+
         Debug.Log($"{gameObject.name} has died");
         //spawn kill particles
         Instantiate(killParticles, gameObject.transform);
@@ -74,5 +81,7 @@ public class Health : MonoBehaviour, IDamageable
         }
         //play kill sound
         AudioHelper.PlayClip2D(killSound, 1);
+
+
     }
 }

@@ -12,6 +12,7 @@ public abstract class PowerUpBase : MonoBehaviour
     private Collider powerupCollider;
     private bool PowerUpState;
     private float PowerupTime;
+    Spawner spawner;
 
     protected abstract void PowerUp(TankController player);
     protected abstract void PowerDown(TankController player);
@@ -21,6 +22,7 @@ public abstract class PowerUpBase : MonoBehaviour
         Mesh = GetComponent<MeshRenderer>();
         powerupCollider = GetComponent<Collider>();
         PowerUpState = false;
+        spawner = FindObjectOfType<Spawner>();
     }
 
     private void Update()
@@ -39,6 +41,7 @@ public abstract class PowerUpBase : MonoBehaviour
         if (player != null)
         {
             PowerUp(player);
+            spawner.powerupCount--;
             PowerupTime = PowerupLength;
             PowerUpState = true;
             Feedback();
