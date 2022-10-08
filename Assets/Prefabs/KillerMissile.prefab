@@ -334,7 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletDamage: 5
   BulletSpeed: 10
-  TimeLimit: 5
+  TimeLimit: 2
   explosionParticles: {fileID: 6150616396259236908, guid: f8a9aaac99374ef48a82a65ec3227993, type: 3}
   explosionSound: {fileID: 8300000, guid: 419b28ed489b073419b946b23eb6c44c, type: 3}
   ownerTag: 

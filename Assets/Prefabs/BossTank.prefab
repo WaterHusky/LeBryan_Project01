@@ -343,8 +343,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.09, y: 1.6043385, z: 3.11}
-  m_Center: {x: 0, y: -0.007169187, z: 0.029999953}
+  m_Size: {x: 4.09, y: 3, z: 3.11}
+  m_Center: {x: 0, y: 0.53, z: 0}
 --- !u!54 &5503893611768975031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5286841721627311402, guid: fd113867f3ac9a34786d862226dab897, type: 3}
   _playerTransform: {fileID: 0}
   bossturretPivot: {fileID: 5503893611830814015}
-  fireRate: 0.5
+  fireRate: 2
 --- !u!114 &813403064412151526
 MonoBehaviour:
   m_ObjectHideFlags: 0
