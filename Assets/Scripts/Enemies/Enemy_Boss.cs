@@ -13,7 +13,6 @@ public class Enemy_Boss : MonoBehaviour
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private GameObject bossturretPivot;
 
-    [SerializeField] private float _accuracy = 3;
     [SerializeField] float bulletForce = 25.0f;
     [SerializeField] float fireRate = 1.5f;
 
@@ -25,14 +24,14 @@ public class Enemy_Boss : MonoBehaviour
             FireBullets();
         }
 
+
     }
 
     public void FireBullets()
     {
 
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(bulletSpawn.forward * bulletForce, ForceMode.Impulse);
+        bullet.GetComponent<Projectile>().ownerTag = gameObject.tag;
 
         lastShotTime = Time.time;
 

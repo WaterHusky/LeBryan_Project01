@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Inheritance
-{
+
+
     public class Projectile : MonoBehaviour
     {
         [SerializeField] private int BulletDamage;
@@ -12,6 +12,8 @@ namespace Inheritance
 
         [SerializeField] private ParticleSystem explosionParticles;
         [SerializeField] private AudioClip explosionSound;
+
+        public string ownerTag;
 
         private float Timer;
 
@@ -35,6 +37,8 @@ namespace Inheritance
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.gameObject.CompareTag(ownerTag)) 
+            { return; }
 
             //spawn explosion particles
             Instantiate(explosionParticles, transform.position, explosionParticles.transform.rotation);
@@ -49,5 +53,5 @@ namespace Inheritance
             Destroy(gameObject);
         }
     }
-}
+
 

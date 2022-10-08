@@ -23,7 +23,7 @@ public class TankController : MonoBehaviour
     [SerializeField] private Material tankTurretMaterial;
     [SerializeField] private Material invincibilityMaterial;
 
-    TankController _tankController;
+  
     public bool Invincibility;
     Health health;
 
@@ -40,7 +40,7 @@ public class TankController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         bulletTimer = 0;
-        _tankController = GetComponent<TankController>();
+
     }
 
     private void Start()
@@ -81,6 +81,11 @@ public class TankController : MonoBehaviour
 
     public void DecreaseHealth(int amount)
     {
+        if(Invincibility == true)
+        {
+            return;
+        }
+
         health.TakeDamage(amount);
     }
 
@@ -94,10 +99,8 @@ public class TankController : MonoBehaviour
         // calculate the move amount
         float moveAmountThisFrame = Input.GetAxis("Vertical") * _moveSpeed;
         // create a vector from amount and direction
-        Vector3 moveOffset = transform.forward * moveAmountThisFrame;
-        // apply vector to the rigidbody
-        _rb.MovePosition(_rb.position + moveOffset);
-        // technically adjusting vector is more accurate! (but more complex)
+        _rb.velocity = transform.forward * moveAmountThisFrame * Time.fixedDeltaTime * 1800f;
+
     }
 
     public void TurnTank()
@@ -130,6 +133,7 @@ public class TankController : MonoBehaviour
         //play sound effect
         AudioHelper.PlayClip2D(BulletFiringSound, 1);
         //spawn rocket
-        Instantiate(BulletPrefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
+        GameObject b = Instantiate(BulletPrefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
+        b.GetComponent<Projectile>().ownerTag = gameObject.tag;
     }
 }

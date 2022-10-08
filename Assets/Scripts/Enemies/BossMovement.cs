@@ -55,11 +55,11 @@ public class BossMovement : MonoBehaviour
 
                 float randX = UnityEngine.Random.Range(leftPatrolBound, rightPatrolBound);
                 float randZ = UnityEngine.Random.Range(lowerPatrolBound, upperPatrolBound);
-                transform.LookAt(targetPatrolPosition);
                 targetPatrolPosition = new Vector3(randX, transform.position.y, randZ);
             }
 
             //move towards target position
+            transform.LookAt(targetPatrolPosition);
             transform.position = Vector3.MoveTowards(transform.position, targetPatrolPosition, speed * Time.deltaTime);
             //update patroling timer
             patrolTimer -= Time.deltaTime;
@@ -92,6 +92,7 @@ public class BossMovement : MonoBehaviour
             {
                 //move towards target charging position
                 transform.position = Vector3.MoveTowards(transform.position, targetChargePosition, speed * Time.deltaTime);
+                transform.LookAt(targetChargePosition);
 
                 //if the spot has now been reached, initiate charge attack
                 if (Vector3.Distance(transform.position, targetChargePosition) <= 0.5f)
@@ -151,10 +152,13 @@ public class BossMovement : MonoBehaviour
         GetComponent<Enemy_Boss>().enabled = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-        damageable?.TakeDamage(physicalBossDamage);
+        Health h = collider.gameObject.GetComponent<Health>();
+        if(h != null)
+        {
+            h.TakeDamage(physicalBossDamage);
+        }
     }
 
 }

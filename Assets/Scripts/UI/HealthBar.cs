@@ -12,11 +12,13 @@ public class HealthBar : MonoBehaviour
     private void OnEnable()
     {
         health.TookDamage += UpdateBar;
+        health.GainHealth += UpdateBar;
     }
 
     private void OnDisable()
     {
         health.TookDamage -= UpdateBar;
+        health.GainHealth -= UpdateBar;
     }
 
     private void UpdateBar(int currentHealth)

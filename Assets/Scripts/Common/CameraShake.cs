@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     [SerializeField] private Health playerHealth;
+    [SerializeField] float shakeIntensity = .2f;
+
 
     private void OnEnable()
     {
@@ -18,7 +20,7 @@ public class CameraShake : MonoBehaviour
 
     private void StartShake(int damage)
     {
-        StartCoroutine(Shake(.15f,.4f,damage));
+        StartCoroutine(Shake(.15f,shakeIntensity,damage));
     }
 
     public IEnumerator Shake(float duration, float magnitude, int damage)
@@ -36,6 +38,7 @@ public class CameraShake : MonoBehaviour
             transform.localPosition = new Vector3(x, y, orignalPos.z);
 
             elapsed += Time.deltaTime;
+
             yield return null;
         }
 

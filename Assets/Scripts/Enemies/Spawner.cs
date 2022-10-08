@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject Minion;
+
     [SerializeField] public List<GameObject> powerUps;
     public int minX;
     public int maxX;
@@ -16,10 +17,12 @@ public class Spawner : MonoBehaviour
     public int powerupCount;
 
 
+
     void Start()
     {
         StartCoroutine(SpawnDrop());
     }
+
 
     IEnumerator SpawnDrop()
     {
@@ -29,7 +32,7 @@ public class Spawner : MonoBehaviour
             posX = Random.Range(minX, maxX);
             posZ = Random.Range(minZ, maxZ);
             // Spawns the enemy in that spot
-            Instantiate(Minion, new Vector3(posX, 1, posZ), Quaternion.identity);
+           Instantiate(Minion, new Vector3(posX, 1, posZ), Quaternion.identity);
             yield return new WaitForSeconds(1f);
             enemyCount += 1;
         }
@@ -45,7 +48,7 @@ public class Spawner : MonoBehaviour
             powerupCount += 1;
         }
 
-
-
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(SpawnDrop());
     }
 }

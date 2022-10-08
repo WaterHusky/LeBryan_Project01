@@ -319,7 +319,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &6766136001114778194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,3 +337,4 @@ MonoBehaviour:
   TimeLimit: 5
   explosionParticles: {fileID: 6150616396259236908, guid: f8a9aaac99374ef48a82a65ec3227993, type: 3}
   explosionSound: {fileID: 8300000, guid: 419b28ed489b073419b946b23eb6c44c, type: 3}
+  ownerTag: 

@@ -24,32 +24,28 @@ public class ScreenFlash : MonoBehaviour
         StartCoroutine(Flash(damage));
     }
 
+    float flashAlpha = 0;
+
     private IEnumerator Flash(int damage)
     {
-        //0.1176471 == 30
-        float flashAlpha = 0.1176471f * damage; //IMPORTANT: this assumes that all received damage values are either 1 or 2
-
         //fade flash in
-        float fadeTime = totalFlashTime / 2;
-        float timer = 0;
-        Color tempColor = panel.color;
-        while (panel.color.a < flashAlpha)
-        {
-            tempColor.a = Mathf.Lerp(0, flashAlpha, timer / fadeTime);
-            panel.color = tempColor;
-            timer += Time.deltaTime;
-            yield return null;
-        }
+        flashAlpha = 1;
+        panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, 1);
+
+        yield return 0;
 
         //fade flash out
-        timer = 0;
-        tempColor = panel.color;
-        while (panel.color.a > 0)
+        Color tempColor = panel.color; 
+        while (panel.color.a > 0.1f)
         {
-            tempColor.a = Mathf.Lerp(0, flashAlpha, timer / fadeTime);
+            flashAlpha = Mathf.Lerp(flashAlpha,0,Time.deltaTime);
+            tempColor.a = flashAlpha;
             panel.color = tempColor;
-            timer += Time.deltaTime;
-            yield return null;
+            yield return 0;
         }
+
+        flashAlpha = 0;
+        tempColor.a = 0;
+        panel.color = tempColor;
     }
 }

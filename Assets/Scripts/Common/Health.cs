@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
     {
-    [SerializeField] public int maxHP;
+    GameController GC;
+    public TankController player;
+    public int maxHP;
     [SerializeField] private Collider objectCollider;
     [SerializeField] private List<MeshRenderer> artMeshRenderers;
     [SerializeField] private AudioClip hurtSound;
@@ -13,16 +15,31 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip killSound;
     public int currentHP;
     public event Action<int> TookDamage;
+    public event Action<int> GainHealth;
     Spawner spawner;
     private void Awake()
     {
         currentHP = maxHP;
     }
 
+    private void Start()
+    {
+        GC = GameController.main;
+    }
+
     public void TakeDamage(int damage)
     {
+        if(player != null) 
+        {
+            if(player.Invincibility == true)
+            {
+                return;
+            }
+        }
         //apply damage
         currentHP -= damage;
+
+        currentHP = currentHP < 0 ? 0 : currentHP;
 
 
         //invoke the event for anything listening
@@ -42,6 +59,8 @@ public class Health : MonoBehaviour, IDamageable
     public void Heal(int heal)
     {
         currentHP += heal;
+        GainHealth?.Invoke(currentHP);
+        currentHP = currentHP > maxHP ? maxHP : currentHP;
     }
 
     private IEnumerator HurtFlash()
@@ -63,10 +82,9 @@ public class Health : MonoBehaviour, IDamageable
 
     private void Kill()
     {
-
-        if (gameObject.tag == "Minion")
+        if (gameObject.CompareTag("Minion"))
         {
-            spawner.enemyCount--;
+            MinionDeath();
         }
 
         Debug.Log($"{gameObject.name} has died");
@@ -84,4 +102,12 @@ public class Health : MonoBehaviour, IDamageable
 
 
     }
+    public void MinionDeath()
+    {
+        if(spawner == null)
+        { spawner = GC.spawner; }
+
+        spawner.enemyCount -= 1;
+    }
+  
 }

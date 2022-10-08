@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Minion : MonoBehaviour
 {
     TankController player;
+    public Health health;
     [SerializeField] private int physicalMinionDamage;
     int MoveSpeed = 4;
 
@@ -23,9 +24,9 @@ public class Minion : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider playerCollision)
     {
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        IDamageable damageable = playerCollision.gameObject.GetComponent<IDamageable>();
         damageable?.TakeDamage(physicalMinionDamage);
     }
 

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541891180525620035}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.008874491, z: 0.518}
+  m_LocalPosition: {x: 0, y: -0.008874491, z: 0.541}
   m_LocalScale: {x: 2.3911834, y: 2.958143, z: 0.83373463}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 3885749451279964888}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,8 +244,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.95, y: 2.02, z: 1.61463}
-  m_Center: {x: 0, y: -0.23, z: -0.26}
+  m_Size: {x: 2.26, y: 1.25, z: 1.19}
+  m_Center: {x: 0, y: 0.23, z: 0}
 --- !u!54 &5503893611768975031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -257,11 +257,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 80
+  m_CollisionDetection: 2
 --- !u!114 &5503893611768975024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,19 +274,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509303ee69e48a841ac32daa0fd2a2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0.25
+  _moveSpeed: 0.5
   _turnSpeed: 2
-  turretPivot: {fileID: 0}
-  BulletSpawnPoint: {fileID: 0}
-  BulletPrefab: {fileID: 0}
-  BulletCooldown: 0
-  BulletFiringParticles: {fileID: 0}
-  BulletFiringSound: {fileID: 0}
-  tankBodyPart: {fileID: 0}
-  tankTurretPart: {fileID: 0}
-  tankBodyMaterial: {fileID: 0}
-  tankTurretMaterial: {fileID: 0}
-  invincibilityMaterial: {fileID: 0}
+  turretPivot: {fileID: 5503893611830814015}
+  BulletSpawnPoint: {fileID: 4730429542702947350}
+  BulletPrefab: {fileID: 5286841721627311402, guid: 867fe29cd4bfdd641a750019aaac9f28, type: 3}
+  BulletCooldown: 1
+  BulletFiringParticles: {fileID: 6150616396259236908, guid: f8a9aaac99374ef48a82a65ec3227993, type: 3}
+  BulletFiringSound: {fileID: 8300000, guid: 0a105ba041aa66e41832c1447f917f9d, type: 3}
+  tankBodyPart: {fileID: 5503893611381477683}
+  tankTurretPart: {fileID: 5503893611830814015}
+  tankBodyMaterial: {fileID: 2100000, guid: b1310ba89d583b1449ae1c0bf6e5b4f0, type: 2}
+  tankTurretMaterial: {fileID: 2100000, guid: b1310ba89d583b1449ae1c0bf6e5b4f0, type: 2}
+  invincibilityMaterial: {fileID: 2100000, guid: db593616ba908b44eacec1dbb2280c71, type: 2}
   Invincibility: 0
 --- !u!114 &3885749451279964888
 MonoBehaviour:
@@ -300,13 +300,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a6fbf1f5e0e6f488e59592f4f6f6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 0
-  objectCollider: {fileID: 0}
-  artMeshRenderers: []
-  hurtSound: {fileID: 0}
-  killParticles: {fileID: 0}
-  killSound: {fileID: 0}
-  currentHP: 0
+  player: {fileID: 5503893611768975024}
+  maxHP: 30
+  objectCollider: {fileID: 5503893611768975029}
+  artMeshRenderers:
+  - {fileID: 5503893611381477693}
+  - {fileID: 5503893612217366285}
+  - {fileID: 5503893611538047400}
+  - {fileID: 5503893611830814009}
+  hurtSound: {fileID: 8300000, guid: eab5d274da219d14399d25e142e34cbe, type: 3}
+  killParticles: {fileID: 7173890154104247920, guid: 3e6271e1f3d8d754ab164080199ccfd6, type: 3}
+  killSound: {fileID: 8300000, guid: 818a86f5afb262b488e3dfbebc1c3fef, type: 3}
+  currentHP: 30
 --- !u!1 &5503893611830814015
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class PowerUpBase : MonoBehaviour
 {
+    GameController GC;
     [SerializeField] private float PowerupLength;
     [SerializeField] private ParticleSystem collectParticles;
     [SerializeField] private AudioClip collectSound;
@@ -17,12 +18,12 @@ public abstract class PowerUpBase : MonoBehaviour
     protected abstract void PowerUp(TankController player);
     protected abstract void PowerDown(TankController player);
 
-    private void Awake()
+    private void Start()
     {
+        GC = GameController.main;
         Mesh = GetComponent<MeshRenderer>();
         powerupCollider = GetComponent<Collider>();
         PowerUpState = false;
-        spawner = FindObjectOfType<Spawner>();
     }
 
     private void Update()
@@ -37,11 +38,13 @@ public abstract class PowerUpBase : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (spawner == null)
+        { spawner = GC.spawner; }
         player = other.gameObject.GetComponent<TankController>();
         if (player != null)
         {
             PowerUp(player);
-            spawner.powerupCount--;
+            spawner.powerupCount -= 1;
             PowerupTime = PowerupLength;
             PowerUpState = true;
             Feedback();
