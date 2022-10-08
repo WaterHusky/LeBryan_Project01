@@ -1320,6 +1320,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 813403064412151526, guid: 613fb9f52c77f324e81b3bed641c5a48, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5503893611057675974}
     - target: {fileID: 5503893611768975028, guid: 613fb9f52c77f324e81b3bed641c5a48, type: 3}
       propertyPath: m_Name
       value: BossTank
@@ -2518,6 +2522,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5503893611768975030, guid: e36929f0bae31604ead945135405ccb1, type: 3}
   m_PrefabInstance: {fileID: 5503893611057675972}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5503893611057675974 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5503893611768975024, guid: e36929f0bae31604ead945135405ccb1, type: 3}
+  m_PrefabInstance: {fileID: 5503893611057675972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 509303ee69e48a841ac32daa0fd2a2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5503893611057675985 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3885749451279964888, guid: e36929f0bae31604ead945135405ccb1, type: 3}
