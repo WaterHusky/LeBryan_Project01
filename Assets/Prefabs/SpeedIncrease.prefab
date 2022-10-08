@@ -260,7 +260,7 @@ MonoBehaviour:
   _movementSpeed: 1
   _collectParticles: {fileID: 6150616396259236908, guid: a0442380aa428c247b520e7a6801bbf0, type: 3}
   _collectSound: {fileID: 8300000, guid: fba6a1170a81f064092bc26e91269e37, type: 3}
-  _speedAmount: 0.5
+  _speedAmount: 0.2
 --- !u!1001 &7784442990304835939
 PrefabInstance:
   m_ObjectHideFlags: 0
