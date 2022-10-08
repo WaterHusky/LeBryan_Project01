@@ -13,7 +13,6 @@ public class Enemy_Boss : MonoBehaviour
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private GameObject bossturretPivot;
 
-    [SerializeField] float bulletForce = 25.0f;
     [SerializeField] float fireRate = 1.5f;
 
     private void Update()

@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
             posX = Random.Range(minX, maxX);
             posZ = Random.Range(minZ, maxZ);
             // Spawns a randomn powerup in that spot
-            Instantiate(powerUps[Random.Range(0, powerUps.Count - 1)], new Vector3(posX, 1, posZ), Quaternion.identity);
+            Instantiate(powerUps[Random.Range(0, powerUps.Count)], new Vector3(posX, 1, posZ), Quaternion.identity);
             yield return new WaitForSeconds(1f);
             powerupCount += 1;
         }
