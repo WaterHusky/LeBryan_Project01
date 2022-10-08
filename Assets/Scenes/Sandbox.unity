@@ -574,7 +574,7 @@ MonoBehaviour:
   maxX: 23
   minZ: -23
   maxZ: 23
-  enemyCount: 10
+  enemyCount: 0
   powerupCount: 0
 --- !u!4 &276834965
 Transform:
