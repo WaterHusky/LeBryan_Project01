@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 0.5
-  _turnSpeed: 2
+  _turnSpeed: 3
   turretPivot: {fileID: 5503893611830814015}
   BulletSpawnPoint: {fileID: 4730429542702947350}
   BulletPrefab: {fileID: 5286841721627311402, guid: 867fe29cd4bfdd641a750019aaac9f28, type: 3}

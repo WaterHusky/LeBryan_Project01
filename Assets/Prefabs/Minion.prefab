@@ -405,7 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  maxHP: 10
+  maxHP: 5
   objectCollider: {fileID: 5503893611768975029}
   artMeshRenderers:
   - {fileID: 5503893611381477693}
@@ -415,7 +415,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: eab5d274da219d14399d25e142e34cbe, type: 3}
   killParticles: {fileID: 6150616396259236908, guid: 317c78e74109b1f4fa294165ba692432, type: 3}
   killSound: {fileID: 8300000, guid: 818a86f5afb262b488e3dfbebc1c3fef, type: 3}
-  currentHP: 10
+  currentHP: 5
 --- !u!114 &201712236433593247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 3885749451279964888}
-  physicalMinionDamage: 3
+  physicalMinionDamage: 2
 --- !u!1 &5503893611830814015
 GameObject:
   m_ObjectHideFlags: 0
